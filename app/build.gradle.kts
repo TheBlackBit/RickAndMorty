@@ -2,6 +2,7 @@ plugins {
     id("theblackbit.rickandmorty.application")
     id("theblackbit.rickandmorty.application.compose")
     id("theblackbit.rickandmorty.hilt")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
