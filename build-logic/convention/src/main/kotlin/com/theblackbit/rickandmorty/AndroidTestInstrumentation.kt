@@ -8,7 +8,7 @@ internal fun Project.configureAndroidTest(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
-        defaultConfig.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        defaultConfig.testInstrumentationRunner = "com.theblackbit.rickandmorty.core.testing.HiltTestRunner"
     }
 
     dependencies {
