@@ -16,7 +16,6 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
                 add("kapt", libsCatalog.findLibrary("hilt.compiler").get())
                 add("kapt", libsCatalog.findLibrary("hilt.android.compiler").get())
                 add("kaptAndroidTest", libsCatalog.findLibrary("hilt.compiler").get())
-                add("androidTestImplementation", libsCatalog.findLibrary("hilt.android.testing").get())
             }
         }
     }
