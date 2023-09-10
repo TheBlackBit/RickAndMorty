@@ -24,6 +24,13 @@ platform :android do
          gradle(task: "ktlintCheck")
        end
 
+   desc 'Unit test verification'
+   lane :unit_test_verification do
+   setup_ci if ENV['CI']
+     gradle(task: "clean")
+     gradle(task: "testDebugUnitTest")
+   end
+
    desc 'Generate coverage report'
       lane :coverage_report do
       setup_ci if ENV['CI']
@@ -41,7 +48,8 @@ platform :android do
      desc "Increment version code"
      lane :increment_version do |options|
         latest_release = firebase_app_distribution_get_latest_release(
-          app: options[:id]
+          app: options[:id],
+          firebase_cli_token: options[:token]
         )
         increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
       end
