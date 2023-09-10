@@ -15,3 +15,7 @@ android {
         versionName = "0.0.0"
     }
 }
+
+dependencies {
+    implementation(project(":core:resources"))
+}
