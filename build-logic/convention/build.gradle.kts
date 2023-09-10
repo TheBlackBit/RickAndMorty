@@ -51,5 +51,9 @@ gradlePlugin {
             id = "theblackbit.rickandmorty.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
+        register("androidJacoco") {
+            id = "theblackbit.rickandmorty.jacoco"
+            implementationClass = "AndroidJacocoConventionPlugin"
+        }
     }
 }

@@ -1,0 +1,68 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+GRADLE_FILE_PATH = "app/build.gradle.kts"
+APK_FILE_PATH = "app/build/outputs/apk/release/app-release.apk"
+default_platform(:android)
+
+platform :android do
+    desc 'Lint verification'
+       lane :lint_verification do
+       setup_ci if ENV['CI']
+         gradle(task: "clean")
+         gradle(task: "ktlintCheck")
+       end
+
+   desc 'Generate coverage report'
+      lane :coverage_report do
+      setup_ci if ENV['CI']
+        gradle(task: "clean")
+        gradle(task: "jacocoMergedReport")
+      end
+
+    desc "GenerateAPK"
+    lane :generate_apk do
+       setup_ci if ENV['CI']
+         gradle(task: "clean")
+         gradle(task: "assembleRelease")
+      end
+
+     desc "Increment version code"
+     lane :increment_version do |options|
+        latest_release = firebase_app_distribution_get_latest_release(
+          app: options[:id]
+        )
+        increment_version_code({ version_code: latest_release[:buildVersion].to_i + 1 })
+      end
+
+      desc "Set app version name."
+       lane :set_version_name do |options|
+       setup_ci if ENV['CI']
+         android_set_version_name(
+             version_name: options[:version],
+             gradle_file: GRADLE_FILE_PATH)
+       end
+
+    desc "Release app FirebaseAppDistribution"
+    lane :distribute do |options|
+        firebase_app_distribution(
+            app: options[:id],
+            testers: options[:testers],
+            release_notes: options[:notes],
+            android_artifact_type: "APK",
+            firebase_cli_token: options[:token],
+            android_artifact_path: APK_FILE_PATH
+        )
+    end
+end

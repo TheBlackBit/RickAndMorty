@@ -4,6 +4,8 @@
     <disabledRules>
       <list>
         <option value="trailing-comma-on-call-site" />
+        <option value="trailing-comma-on-declaration-site" />
+        <option value="trailing-comma-on-declaration-site" />
       </list>
     </disabledRules>
   </component>
