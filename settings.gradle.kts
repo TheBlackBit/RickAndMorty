@@ -17,3 +17,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "R&M"
 include(":app")
+include(":core:network")
+include(":core:local-storage")
+include(":core:resources")
+include(":core:model")
+include(":core:testing")
+include(":feature:character")
