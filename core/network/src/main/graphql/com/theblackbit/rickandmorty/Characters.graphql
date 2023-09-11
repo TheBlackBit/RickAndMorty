@@ -3,6 +3,9 @@ query Characters($page: Int!) {
         results {
             id,
             name,
+            status,
+            species,
+            gender,
             image
         }
     }
