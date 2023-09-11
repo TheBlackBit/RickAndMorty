@@ -16,6 +16,7 @@ internal fun Project.configureAndroidTest(
         add("androidTestImplementation", libsCatalog.findLibrary("espresso.contrib").get())
         add("androidTestImplementation", libsCatalog.findLibrary("espresso.intent").get())
         add("androidTestImplementation", libsCatalog.findLibrary("espresso.web").get())
+        "androidTestImplementation"(project(":core:testing"))
         add("androidTestImplementation", libsCatalog.findLibrary("android.test.junit").get())
     }
 }
