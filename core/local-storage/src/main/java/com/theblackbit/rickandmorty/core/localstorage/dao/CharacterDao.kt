@@ -9,14 +9,14 @@ import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
 interface CharacterDao {
 
     @Upsert
-    fun upsertCharacters(characterEntities: List<CharacterEntity>)
+    suspend fun upsertCharacters(characterEntities: List<CharacterEntity>)
 
     @Query("SELECT * from characterentity where page =:pageNumber")
-    fun getCharacters(pageNumber: Int): List<CharacterEntity>
+    suspend fun getCharacters(pageNumber: Int): List<CharacterEntity>
 
     @Query("SELECT * from characterentity where id =:id")
-    fun getCharacter(id: Int): CharacterEntity?
+    suspend fun getCharacter(id: Int): CharacterEntity?
 
     @Query("DELETE from characterentity where page= :pageNumber")
-    fun deleteCharacter(pageNumber: Int)
+    suspend fun deleteCharacter(pageNumber: Int)
 }
