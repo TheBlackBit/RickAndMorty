@@ -14,4 +14,5 @@ android {
 dependencies {
     implementation(project(":core:local-storage"))
     implementation(project(":core:network"))
+    implementation(project(":core:model"))
 }

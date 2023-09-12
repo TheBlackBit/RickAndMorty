@@ -1,8 +1,8 @@
-package com.theblackbit.rickandmorty.feature.character.data.local
+package com.theblackbit.rickandmorty.core.localstorage.datasource
 
 import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 
-interface CharacterLocalRepository {
+interface LocalDataSource {
     suspend fun getCharacters(pageNumber: Int): List<CharacterEntity>
     suspend fun getCharacter(id: Int): CharacterEntity?
     suspend fun upsertCharacter(characters: List<CharacterEntity>)

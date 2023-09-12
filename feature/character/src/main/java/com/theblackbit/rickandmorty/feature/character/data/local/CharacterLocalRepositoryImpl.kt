@@ -1,24 +1,24 @@
 package com.theblackbit.rickandmorty.feature.character.data.local
 
-import com.theblackbit.rickandmorty.core.localstorage.dao.CharacterDao
-import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
+import com.theblackbit.rickandmorty.core.localstorage.datasource.LocalDataSource
+import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 
 class CharacterLocalRepositoryImpl(
-    private val characterDao: CharacterDao
+    private val localDataSource: LocalDataSource
 ) : CharacterLocalRepository {
     override suspend fun getCharacters(pageNumber: Int): List<CharacterEntity> {
-        return characterDao.getCharacters(pageNumber)
+        return localDataSource.getCharacters(pageNumber)
     }
 
     override suspend fun getCharacter(id: Int): CharacterEntity? {
-        return characterDao.getCharacter(id)
+        return localDataSource.getCharacter(id)
     }
 
     override suspend fun upsertCharacter(characters: List<CharacterEntity>) {
-        characterDao.upsertCharacters(characters)
+        localDataSource.upsertCharacter(characters)
     }
 
     override suspend fun deleteCharacter(pageNumber: Int) {
-        characterDao.deleteCharacter(pageNumber)
+        localDataSource.deleteCharacter(pageNumber)
     }
 }

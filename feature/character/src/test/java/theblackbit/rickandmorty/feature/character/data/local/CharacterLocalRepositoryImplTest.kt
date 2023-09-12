@@ -1,7 +1,7 @@
-package theblackbit.rickandmorty.feature.character.data.local.repository
+package theblackbit.rickandmorty.feature.character.data.local
 
-import com.theblackbit.rickandmorty.core.localstorage.dao.CharacterDao
-import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
+import com.theblackbit.rickandmorty.core.localstorage.datasource.LocalDataSource
+import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 import com.theblackbit.rickandmorty.feature.character.data.local.CharacterLocalRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coJustRun
@@ -14,27 +14,27 @@ import org.junit.Test
 
 class CharacterLocalRepositoryImplTest {
 
-    private lateinit var characterDao: CharacterDao
+    private lateinit var localDataSource: LocalDataSource
 
     private lateinit var sut: CharacterLocalRepositoryImpl
 
     @Before
     fun setUp() {
-        characterDao = mockk()
-        sut = CharacterLocalRepositoryImpl(characterDao)
+        localDataSource = mockk()
+        sut = CharacterLocalRepositoryImpl(localDataSource)
     }
 
     @Test
     fun `when getAllCharacters characterDao must return a list of characters`(): Unit =
         runBlocking {
             coEvery {
-                characterDao.getCharacters(1)
+                localDataSource.getCharacters(1)
             } returns listOfEntities()
 
             val result = sut.getCharacters(1)
 
             coVerify {
-                characterDao.getCharacters(1)
+                localDataSource.getCharacters(1)
             }
 
             assert(result.containsAll(listOfEntities()))
@@ -45,13 +45,13 @@ class CharacterLocalRepositoryImplTest {
         runBlocking {
             val character = listOfEntities().first()
             coEvery {
-                characterDao.getCharacter(1)
+                localDataSource.getCharacter(1)
             } returns character
 
             val result = sut.getCharacter(1)
 
             coVerify {
-                characterDao.getCharacter(1)
+                localDataSource.getCharacter(1)
             }
 
             assertEquals(character, result)
@@ -61,13 +61,13 @@ class CharacterLocalRepositoryImplTest {
     fun `when getCharacter characterDao returns null`(): Unit =
         runBlocking {
             coEvery {
-                characterDao.getCharacter(4)
+                localDataSource.getCharacter(4)
             } returns null
 
             val result = sut.getCharacter(4)
 
             coVerify {
-                characterDao.getCharacter(4)
+                localDataSource.getCharacter(4)
             }
 
             assertEquals(result, null)
@@ -76,24 +76,24 @@ class CharacterLocalRepositoryImplTest {
     @Test
     fun `when upsert character characterDao upsertCharacter method is called`(): Unit =
         runBlocking {
-            coJustRun { characterDao.upsertCharacters(listOfEntities()) }
+            coJustRun { localDataSource.upsertCharacter(listOfEntities()) }
 
             sut.upsertCharacter(listOfEntities())
 
             coVerify {
-                characterDao.upsertCharacters(listOfEntities())
+                localDataSource.upsertCharacter(listOfEntities())
             }
         }
 
     @Test
     fun `when delete character characterDao deleteCharacters method is called`(): Unit =
         runBlocking {
-            coJustRun { characterDao.deleteCharacter(1) }
+            coJustRun { localDataSource.deleteCharacter(1) }
 
             sut.deleteCharacter(1)
 
             coVerify {
-                characterDao.deleteCharacter(1)
+                localDataSource.deleteCharacter(1)
             }
         }
 

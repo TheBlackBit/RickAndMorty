@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.theblackbit.rickandmorty.core.localstorage.dao.CharacterDao
-import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
+import com.theblackbit.rickandmorty.core.localstorage.room.RickAndMortyRoom
+import com.theblackbit.rickandmorty.core.localstorage.room.dao.CharacterDao
+import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals

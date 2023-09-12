@@ -1,9 +1,9 @@
-package com.theblackbit.rickandmorty.core.localstorage.dao
+package com.theblackbit.rickandmorty.core.localstorage.room.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
+import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 
 @Dao
 interface CharacterDao {
