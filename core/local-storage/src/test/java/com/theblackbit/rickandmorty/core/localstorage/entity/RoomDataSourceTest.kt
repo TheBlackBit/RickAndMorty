@@ -88,12 +88,12 @@ class RoomDataSourceTest {
     @Test
     fun `when delete character characterDao deleteCharacters method is called`(): Unit =
         runBlocking {
-            coJustRun { characterDao.deleteCharacter(1) }
+            coJustRun { characterDao.deleteCharacter() }
 
-            sut.deleteCharacter(1)
+            sut.deleteCharacter()
 
             coVerify {
-                characterDao.deleteCharacter(1)
+                characterDao.deleteCharacter()
             }
         }
 

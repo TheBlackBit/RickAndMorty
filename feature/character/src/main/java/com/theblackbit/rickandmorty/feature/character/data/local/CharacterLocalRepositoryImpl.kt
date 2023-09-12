@@ -18,7 +18,7 @@ class CharacterLocalRepositoryImpl(
         localDataSource.upsertCharacter(characters)
     }
 
-    override suspend fun deleteCharacter(pageNumber: Int) {
-        localDataSource.deleteCharacter(pageNumber)
+    override suspend fun deleteCharacter() {
+        localDataSource.deleteCharacter()
     }
 }

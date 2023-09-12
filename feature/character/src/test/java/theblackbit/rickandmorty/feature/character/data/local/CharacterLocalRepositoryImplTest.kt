@@ -88,12 +88,12 @@ class CharacterLocalRepositoryImplTest {
     @Test
     fun `when delete character characterDao deleteCharacters method is called`(): Unit =
         runBlocking {
-            coJustRun { localDataSource.deleteCharacter(1) }
+            coJustRun { localDataSource.deleteCharacter() }
 
-            sut.deleteCharacter(1)
+            sut.deleteCharacter()
 
             coVerify {
-                localDataSource.deleteCharacter(1)
+                localDataSource.deleteCharacter()
             }
         }
 

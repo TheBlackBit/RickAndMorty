@@ -6,5 +6,5 @@ interface CharacterLocalRepository {
     suspend fun getCharacters(pageNumber: Int): List<CharacterEntity>
     suspend fun getCharacter(id: Int): CharacterEntity?
     suspend fun upsertCharacter(characters: List<CharacterEntity>)
-    suspend fun deleteCharacter(pageNumber: Int)
+    suspend fun deleteCharacter()
 }

@@ -68,7 +68,7 @@ class CharacterDaoTest {
 
         characterDao.upsertCharacters(listOfData)
 
-        characterDao.deleteCharacter(1)
+        characterDao.deleteCharacter()
 
         val result = characterDao.getCharacters(1)
 

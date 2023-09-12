@@ -18,7 +18,7 @@ class RoomDataSource(
         characterDao.upsertCharacters(characters)
     }
 
-    override suspend fun deleteCharacter(pageNumber: Int) {
-        characterDao.deleteCharacter(pageNumber)
+    override suspend fun deleteCharacter() {
+        characterDao.deleteCharacter()
     }
 }

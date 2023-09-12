@@ -11,6 +11,7 @@ navigationAnimationCompose = "0.25.1"
 activityCompose = "1.7.2"
 apollo = "3.8.2"
 hilt = "2.48"
+hiltCompose = "1.0.0"
 hiltCompiler = "1.0.0"
 room = "2.6.0-beta01"
 paging3 = "3.2.1"
@@ -25,6 +26,7 @@ ktlint = "11.5.1"
 appcompat = "1.6.1"
 material = "1.9.0"
 testing = "1.4.0"
+constraintLayoutCompose = "1.0.1"
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBoom" }
@@ -40,10 +42,12 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 accompanist-navigation-animation = { group = "com.google.accompanist", name = "accompanist-navigation-animation" , version.ref = "navigationAnimationCompose"}
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutCompose" }
 # Dagger Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose"}
 # ROOM
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }

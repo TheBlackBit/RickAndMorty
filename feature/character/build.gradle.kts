@@ -15,4 +15,6 @@ dependencies {
     implementation(project(":core:local-storage"))
     implementation(project(":core:network"))
     implementation(project(":core:model"))
+    implementation(project(":core:resources"))
+    implementation(libs.landscapist.glide)
 }
