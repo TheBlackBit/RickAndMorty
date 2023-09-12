@@ -63,6 +63,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging3" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+apollo-testing-support = { group = "com.apollographql.apollo3", name = "apollo-testing-support", version.ref = "apollo" }
 # Instrumentation test dependencies
 android-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitAndroidTest" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }

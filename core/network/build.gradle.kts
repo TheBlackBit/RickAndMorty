@@ -24,4 +24,5 @@ android {
 
 dependencies {
     implementation(libs.apollo.runtime)
+    testImplementation(libs.apollo.testing.support)
 }
