@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.theblackbit.rickandmorty.core.resources.ui.theme.RMTheme
-import com.theblackbit.rickandmorty.feature.character.presentation.screens.listcharacters.Container
+import com.theblackbit.rickandmorty.feature.character.presentation.navigation.CharacterGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Container()
+                    CharacterGraph()
                 }
             }
         }

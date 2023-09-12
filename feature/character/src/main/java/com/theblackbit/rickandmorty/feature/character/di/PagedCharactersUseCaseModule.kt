@@ -10,7 +10,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 
-
 @Module
 @InstallIn(ViewModelComponent::class)
 object PagedCharactersUseCaseModule {
@@ -26,7 +25,7 @@ object PagedCharactersUseCaseModule {
             charactersPagingSource = charactersPagingSource,
             pagingConfig = PagingConfig(
                 pageSize = pageSize,
-                prefetchDistance = pageSize / 2,
+                prefetchDistance = pageSize / 2
             )
         )
     }

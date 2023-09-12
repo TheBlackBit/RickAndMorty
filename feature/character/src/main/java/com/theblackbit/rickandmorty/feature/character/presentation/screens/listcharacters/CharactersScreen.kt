@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -39,45 +38,38 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
 import androidx.constraintlayout.compose.MotionScene
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.glide.GlideImage
 import com.theblackbit.rickandmorty.core.model.Character
+import com.theblackbit.rickandmorty.core.model.encodedImageUrl
 import com.theblackbit.rickandmorty.core.resources.R
-import com.theblackbit.rickandmorty.feature.character.presentation.CharactersViewModel
 import com.theblackbit.rickandmorty.feature.character.presentation.composables.ProgressComposable
 import kotlin.math.absoluteValue
-
-@Composable
-fun Container(viewModel: CharactersViewModel = hiltViewModel()) {
-    val characters = viewModel.collectCharacters(viewModel.viewModelScope).collectAsLazyPagingItems()
-    val scrollState = rememberLazyStaggeredGridState()
-    CharactersScreen(pagingItems = characters, scrollState = scrollState)
-}
 
 @OptIn(ExperimentalMotionApi::class)
 @Composable
 fun CharactersScreen(
     pagingItems: LazyPagingItems<Character>,
-    scrollState: LazyStaggeredGridState
+    scrollState: LazyStaggeredGridState,
+    onClickItem: (id: Int, image: String) -> Unit
 ) {
     val context = LocalContext.current
 
     val value = remember {
         derivedStateOf {
-             val size = scrollState.layoutInfo.visibleItemsInfo.firstOrNull()?.size?.height ?: 1
-              val offset = scrollState.layoutInfo.visibleItemsInfo.firstOrNull()?.offset?.y?.absoluteValue ?: 0
-            if(scrollState.firstVisibleItemIndex == 0) offset / size.toFloat() else 1f
+            val size = scrollState.layoutInfo.visibleItemsInfo.firstOrNull()?.size?.height ?: 1
+            val offset =
+                scrollState.layoutInfo.visibleItemsInfo.firstOrNull()?.offset?.y?.absoluteValue ?: 0
+            if (scrollState.firstVisibleItemIndex == 0) offset / size.toFloat() else 1f
         }
     }
 
     val progress by animateFloatAsState(
         targetValue = value.value,
-        tween(10), label = "Animation"
+        tween(10),
+        label = "Animation"
     )
 
     val motionScene = remember {
@@ -105,7 +97,11 @@ fun CharactersScreen(
                 .fillMaxWidth()
                 .layoutId("content")
         ) {
-            GridCharacters(pagingItems = pagingItems, scrollState)
+            GridCharacters(
+                pagingItems = pagingItems,
+                scrollState = scrollState,
+                onClickItem = onClickItem
+            )
         }
     }
 }
@@ -124,9 +120,11 @@ private fun Logo(
 @Composable
 private fun GridCharacters(
     pagingItems: LazyPagingItems<Character>,
-    scrollState: LazyStaggeredGridState
+    scrollState: LazyStaggeredGridState,
+    onClickItem: (id: Int, image: String) -> Unit
 ) {
-    LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(2),
+    LazyVerticalStaggeredGrid(
+        columns = StaggeredGridCells.Fixed(2),
         state = scrollState,
         content = {
             items(count = pagingItems.itemCount) { index ->
@@ -136,22 +134,24 @@ private fun GridCharacters(
                         character = it,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(it.height.dp)
+                            .height(it.height.dp),
+                        onClickItem
                     )
                 }
             }
-        })
+        }
+    )
 
     if (pagingItems.loadState.refresh == LoadState.Loading) {
         ProgressComposable()
     }
 }
 
-
 @Composable
 private fun CharacterCard(
     character: Character,
-    modifier: Modifier
+    modifier: Modifier,
+    onClickItem: (id: Int, image: String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -160,11 +160,13 @@ private fun CharacterCard(
         Card(
             shape = RoundedCornerShape(20.dp),
             colors = CardDefaults.cardColors(
-                containerColor = Color.Transparent,
+                containerColor = Color.Transparent
             ),
             elevation = CardDefaults.cardElevation(0.dp),
             modifier = modifier,
-            onClick = { },
+            onClick = {
+                onClickItem.invoke(character.id, character.encodedImageUrl())
+            }
         ) {
             GlideImage(
                 modifier = modifier,
@@ -175,8 +177,8 @@ private fun CharacterCard(
                     highlightColor = Color.LightGray,
                     durationMillis = 2000,
                     dropOff = 0.65f,
-                    tilt = 20f,
-                ),
+                    tilt = 20f
+                )
             )
         }
 
@@ -188,7 +190,7 @@ private fun CharacterCard(
             fontWeight = FontWeight.W700,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.padding(top = 8.dp),
+            modifier = Modifier.padding(top = 8.dp)
         )
     }
 }

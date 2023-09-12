@@ -50,7 +50,7 @@ class CharacterRemoteRepositoryImplTest {
             status = "Alive",
             species = "Human",
             gender = "Male",
-            image = "https://image.jpg",
+            image = "https://image.jpg"
         )
 
         val mortyEntity = CharacterResponse(
@@ -59,7 +59,7 @@ class CharacterRemoteRepositoryImplTest {
             status = "Alive",
             species = "Human",
             gender = "Male",
-            image = "https://image2.jpg",
+            image = "https://image2.jpg"
         )
 
         return listOf(rickEntity, mortyEntity)

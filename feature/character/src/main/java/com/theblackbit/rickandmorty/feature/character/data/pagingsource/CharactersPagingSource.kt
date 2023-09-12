@@ -30,7 +30,7 @@ class CharactersPagingSource(
         value: List<CharacterResponse>,
         page: Int
     ): LoadResult<Int, Character> {
-        removeDataFromCache()
+        if (page == 1) removeDataFromCache()
         saveDataToLocalDB(value, page)
         return getDataFromLocalDB(page)
     }

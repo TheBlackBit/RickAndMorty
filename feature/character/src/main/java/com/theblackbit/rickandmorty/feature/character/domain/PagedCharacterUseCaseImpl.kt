@@ -14,7 +14,7 @@ class PagedCharacterUseCaseImpl(
             config = pagingConfig,
             pagingSourceFactory = {
                 charactersPagingSource
-            },
+            }
         )
     }
 }

@@ -6,6 +6,7 @@ ktx = "1.12.0"
 kotlinBoom = "1.8.0"
 lifecycleRuntimeKtx = "2.6.2"
 composeBoom = "2023.09.00"
+lifecycleCompose = "2.6.2"
 navigationCompose = "2.7.2"
 navigationAnimationCompose = "0.25.1"
 activityCompose = "1.7.2"
@@ -27,6 +28,7 @@ appcompat = "1.6.1"
 material = "1.9.0"
 testing = "1.4.0"
 constraintLayoutCompose = "1.0.1"
+lottie = "6.1.0"
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBoom" }
@@ -43,6 +45,7 @@ accompanist-navigation-animation = { group = "com.google.accompanist", name = "a
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutCompose" }
+lifecycle-runtime-compose= { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleCompose" }
 # Dagger Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
@@ -62,6 +65,8 @@ paging-compose = { group = "androidx.paging", name = "paging-compose", version.r
 landscapist-glide = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "glide" }
 # Ktlint
 ktlint-gradle = { group = "org.jlleitschuh.gradle", name = "ktlint-gradle", version.ref = "ktlint" }
+# Lottie
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 # Test dependencies
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
