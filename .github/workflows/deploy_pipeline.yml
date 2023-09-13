@@ -47,6 +47,6 @@ jobs:
       - run: fastlane increment_version id:${{secrets.APP_ID}} token:${{secrets.FIREBASE_CI_TOKEN}}
       - run: fastlane set_version_name version:${{ env.RELEASE_VERSION }}
       - run: fastlane generate_apk
-      - run: fastlane distribute id:${{secrets.APP_ID}} testers:${{vars.TESTERS}} notes:${{vars.NOTES}} token:${{secrets.FIREBASE_CI_TOKEN}}
+      - run: fastlane distribute id:${{secrets.APP_ID}} testers:"${{vars.TESTERS}}" notes:"${{vars.NOTES}}" token:${{secrets.FIREBASE_CI_TOKEN}}
 
 
