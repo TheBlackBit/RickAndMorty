@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewModelScope
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -21,7 +20,7 @@ fun CharacterGraph() {
 
     val viewModel: CharactersViewModel = hiltViewModel()
 
-    val characters = viewModel.collectCharacters(viewModel.viewModelScope).collectAsLazyPagingItems()
+    val characters = viewModel.collectCharacters().collectAsLazyPagingItems()
 
     AnimatedNavHost(
         navController = navController,

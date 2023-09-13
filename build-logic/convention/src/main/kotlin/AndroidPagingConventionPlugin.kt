@@ -10,6 +10,7 @@ class AndroidPagingConventionPlugin : Plugin<Project> {
                 add("implementation", libsCatalog.findLibrary("paging.runtime.ktx").get())
                 add("implementation", libsCatalog.findLibrary("paging.compose").get())
                 add("testImplementation", libsCatalog.findLibrary("paging.common.ktx").get())
+                add("testImplementation", libsCatalog.findLibrary("paging.testing").get())
             }
         }
     }

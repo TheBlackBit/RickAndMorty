@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.TerminalSeparatorType
-import androidx.paging.cachedIn
 import androidx.paging.insertHeaderItem
 import com.theblackbit.rickandmorty.core.model.Character
 import com.theblackbit.rickandmorty.core.util.IoDispatcher
@@ -12,7 +11,6 @@ import com.theblackbit.rickandmorty.feature.character.domain.CharacterInfoUseCas
 import com.theblackbit.rickandmorty.feature.character.domain.PagedCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,9 +30,7 @@ class CharactersViewModel @Inject constructor(
 
     private val _characterInfoStateFlow: MutableStateFlow<Character?> = MutableStateFlow(null)
     val characterInfoStateFlow: StateFlow<Character?> = _characterInfoStateFlow.asStateFlow()
-    fun collectCharacters(
-        scope: CoroutineScope
-    ): Flow<PagingData<Character>> {
+    fun collectCharacters(): Flow<PagingData<Character>> {
         return pagedCharactersUseCase
             .collectPagedCharacters()
             .flow
@@ -47,7 +43,6 @@ class CharactersViewModel @Inject constructor(
                     data.insertHeaderItem(TerminalSeparatorType.FULLY_COMPLETE, header)
                 }
             }
-            .cachedIn(scope)
     }
 
     fun getCharacter(id: Int) {

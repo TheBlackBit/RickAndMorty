@@ -60,7 +60,6 @@ fun CharacterDetailScreen(
     ) {
         val (background, avatar, content, navigationIcon) = createRefs()
 
-
         Image(
             painter = painterResource(R.drawable.portal),
             contentDescription = "Background",

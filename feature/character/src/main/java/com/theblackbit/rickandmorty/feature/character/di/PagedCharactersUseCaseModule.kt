@@ -22,7 +22,7 @@ object PagedCharactersUseCaseModule {
         charactersPagingSource: CharactersPagingSource
     ): PagedCharactersUseCase {
         return PagedCharacterUseCaseImpl(
-            charactersPagingSource = charactersPagingSource,
+            pagingSource = charactersPagingSource,
             pagingConfig = PagingConfig(
                 pageSize = pageSize,
                 prefetchDistance = pageSize / 2
