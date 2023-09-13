@@ -27,6 +27,7 @@ ktlint = "11.5.1"
 appcompat = "1.6.1"
 material = "1.9.0"
 testing = "1.4.0"
+splashScreen = "1.0.1"
 constraintLayoutCompose = "1.0.1"
 lottie = "6.1.0"
 [libraries]
@@ -62,13 +63,14 @@ apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime",
 paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging3" }
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging3" }
 paging-testing = { group = "androidx.paging", name = "paging-testing", version.ref = "paging3" }
-
 # Glide
 landscapist-glide = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "glide" }
 # Ktlint
 ktlint-gradle = { group = "org.jlleitschuh.gradle", name = "ktlint-gradle", version.ref = "ktlint" }
 # Lottie
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
+# Splash scree
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashScreen" }
 # Test dependencies
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }

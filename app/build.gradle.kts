@@ -19,4 +19,5 @@ android {
 dependencies {
     implementation(project(":core:resources"))
     implementation(project(":feature:character"))
+    implementation(libs.core.splashscreen)
 }
