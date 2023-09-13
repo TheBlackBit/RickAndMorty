@@ -38,4 +38,3 @@ class CharacterTest {
         assertFalse(femaleCharacter.isMale())
     }
 }
-
