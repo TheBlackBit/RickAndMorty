@@ -65,7 +65,12 @@ fun RMTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.background.copy(alpha = 0.7f).toArgb()
-            window.navigationBarColor = colorScheme.background.copy(alpha = 0.7f).toArgb()
+            window.navigationBarColor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                Color.Transparent.toArgb()
+            } else {
+                colorScheme.background.copy(alpha = 0.7f).toArgb()
+            }
+
             WindowCompat.setDecorFitsSystemWindows(window, false)
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
             WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars =
