@@ -1,9 +1,9 @@
-package com.theblackbit.rickandmorty.core.localstorage
+package com.theblackbit.rickandmorty.core.localstorage.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.theblackbit.rickandmorty.core.localstorage.dao.CharacterDao
-import com.theblackbit.rickandmorty.core.localstorage.entity.CharacterEntity
+import com.theblackbit.rickandmorty.core.localstorage.room.dao.CharacterDao
+import com.theblackbit.rickandmorty.core.localstorage.room.entity.CharacterEntity
 
 const val LATEST_VERSION = 1
 

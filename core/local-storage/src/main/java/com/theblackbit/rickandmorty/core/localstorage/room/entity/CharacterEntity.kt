@@ -1,4 +1,4 @@
-package com.theblackbit.rickandmorty.core.localstorage.entity
+package com.theblackbit.rickandmorty.core.localstorage.room.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

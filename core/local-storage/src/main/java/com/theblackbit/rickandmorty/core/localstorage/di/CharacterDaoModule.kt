@@ -1,7 +1,7 @@
 package com.theblackbit.rickandmorty.core.localstorage.di
 
-import com.theblackbit.rickandmorty.core.localstorage.RickAndMortyRoom
-import com.theblackbit.rickandmorty.core.localstorage.dao.CharacterDao
+import com.theblackbit.rickandmorty.core.localstorage.room.RickAndMortyRoom
+import com.theblackbit.rickandmorty.core.localstorage.room.dao.CharacterDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

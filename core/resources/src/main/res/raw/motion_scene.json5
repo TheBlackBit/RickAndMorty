@@ -1,0 +1,58 @@
+{
+  ConstraintSets: {
+    start: {
+      headerImage: {
+        width: "spread",
+        height: 250,
+        top: ['parent', 'top', 0],
+        start: ['parent', 'start', 16],
+        end: ['parent', 'end', 16],
+        scaleX: 1,
+        scaleY: 1,
+        alpha: 1
+      },
+      content: {
+        width: 'spread',
+        height: 'spread',
+        start: ['parent', 'start'],
+        end: ['parent', 'end'],
+        top: ['parent','top'],
+        bottom: ['parent','bottom'],
+      }
+    },
+    end: {
+      headerImage: {
+        width: "spread",
+        height: 250,
+        top: ['parent', 'top', 0],
+        start: ['parent', 'start', 0],
+        end: ['parent', 'end', 0],
+        scaleX: 0.8,
+        scaleY: 0.8,
+        alpha: 0
+      },
+      content: {
+        width: 'spread',
+        height: 'spread',
+        start: ['parent', 'start'],
+        end: ['parent', 'end'],
+        top: ['parent','top'],
+        bottom: ['parent','bottom'],
+      }
+    },
+    Transitions: {
+      default: {
+        from: 'start',
+        to: 'end',
+        duration: 900,
+        onSwipe: {
+          maxVelocity: 4.2,
+          maxAccel: 3,
+          anchor: 'content',
+          direction: 'up',
+          side: 'top'
+        },
+      }
+    }
+  }
+}

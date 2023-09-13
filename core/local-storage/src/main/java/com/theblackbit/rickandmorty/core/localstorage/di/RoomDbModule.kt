@@ -2,7 +2,7 @@ package com.theblackbit.rickandmorty.core.localstorage.di
 
 import android.content.Context
 import androidx.room.Room
-import com.theblackbit.rickandmorty.core.localstorage.RickAndMortyRoom
+import com.theblackbit.rickandmorty.core.localstorage.room.RickAndMortyRoom
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object LocalStorageModule {
+object RoomDbModule {
 
     private const val DB_NAME = "rick_and_morty_db"
 

@@ -10,3 +10,13 @@ plugins {
 android {
     namespace = "com.theblackbit.rickandmorty.feature.character"
 }
+
+dependencies {
+    implementation(project(":core:local-storage"))
+    implementation(project(":core:network"))
+    implementation(project(":core:model"))
+    implementation(project(":core:resources"))
+    implementation(project(":core:util"))
+    implementation(libs.landscapist.glide)
+    implementation(libs.lottie.compose)
+}
