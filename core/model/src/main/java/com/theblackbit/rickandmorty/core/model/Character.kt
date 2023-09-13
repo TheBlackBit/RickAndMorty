@@ -19,7 +19,7 @@ fun Character.encodedImageUrl(): String {
 }
 
 fun Character?.statusIcon(): Int {
-    return if (this?.status?.equals("Dead") == true) R.raw.alive else R.raw.dead
+    return if (this?.status?.equals("Dead") == true) R.raw.dead else R.raw.alive
 }
 
 fun Character?.genderIcon(): Int {
