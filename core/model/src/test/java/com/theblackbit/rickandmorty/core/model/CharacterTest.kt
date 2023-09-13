@@ -25,8 +25,8 @@ class CharacterTest {
 
         val aliveCharacter = Character(id = 2, status = "Alive")
 
-        assertFalse(deadCharacter.statusIcon() == R.raw.dead)
-        assertTrue(aliveCharacter.statusIcon() == R.raw.dead)
+        assertFalse(deadCharacter.statusIcon() == R.raw.alive)
+        assertTrue(aliveCharacter.statusIcon() == R.raw.alive)
     }
 
     @Test
