@@ -44,7 +44,11 @@ private fun Project.configureJacoco() {
         }.filter {
             !it.name.contains("Query") &&
                     !it.name.contains("GraphQL") &&
-                    !it.name.contains("Module")
+                    !it.name.contains("Module") &&
+                    !it.name.contains("Composable") &&
+                    !it.name.contains("Screen") &&
+                    !it.name.contains("Graph")
+
 
         }
 
