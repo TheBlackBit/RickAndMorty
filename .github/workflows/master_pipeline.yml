@@ -53,8 +53,7 @@ jobs:
           coverageLocations: |
             ${{github.workspace}}/app/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
             ${{github.workspace}}/core/local-storage/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
-            ${{github.workspace}}/core/model/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
             ${{github.workspace}}/core/network/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
-            ${{github.workspace}}/core/util/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/core/model/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
             ${{github.workspace}}/feature/character/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
     
