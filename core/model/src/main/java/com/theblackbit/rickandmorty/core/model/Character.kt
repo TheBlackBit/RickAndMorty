@@ -1,5 +1,6 @@
 package com.theblackbit.rickandmorty.core.model
 
+import com.theblackbit.rickandmorty.core.resources.R
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
@@ -17,10 +18,10 @@ fun Character.encodedImageUrl(): String {
     return URLEncoder.encode(image, StandardCharsets.UTF_8.toString())
 }
 
-fun Character.isAlive(): Boolean {
-    return status != "Dead"
+fun Character?.statusIcon(): Int {
+    return if (this?.status?.equals("Dead") == true) R.raw.alive else R.raw.dead
 }
 
-fun Character.isMale(): Boolean {
-    return gender == "Male"
+fun Character?.genderIcon(): Int {
+    return if (this?.gender?.equals("Male") == true) R.drawable.baseline_male_24 else R.drawable.baseline_female_24
 }

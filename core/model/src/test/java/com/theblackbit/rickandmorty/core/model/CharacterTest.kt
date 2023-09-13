@@ -1,5 +1,6 @@
 package com.theblackbit.rickandmorty.core.model
 
+import com.theblackbit.rickandmorty.core.resources.R
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -24,8 +25,8 @@ class CharacterTest {
 
         val aliveCharacter = Character(id = 2, status = "Alive")
 
-        assertFalse(deadCharacter.isAlive())
-        assertTrue(aliveCharacter.isAlive())
+        assertFalse(deadCharacter.statusIcon() == R.raw.dead)
+        assertTrue(aliveCharacter.statusIcon() == R.raw.dead)
     }
 
     @Test
@@ -34,7 +35,7 @@ class CharacterTest {
 
         val femaleCharacter = Character(id = 2, gender = "Female")
 
-        assertTrue(maleCharacter.isMale())
-        assertFalse(femaleCharacter.isMale())
+        assertTrue(maleCharacter.genderIcon() == R.drawable.baseline_male_24)
+        assertFalse(femaleCharacter.genderIcon() == R.drawable.baseline_male_24)
     }
 }
