@@ -42,7 +42,7 @@ checks:
     config:
       threshold: 40
 exclude_patterns:
-  - "**/test/"
-  - "**/testing/"
-  - "**/androidTest/"
-  - "**/build-logic/"
+- "**/test/"
+- "**/testing/"
+- "**/androidTest/"
+- "**/build-logic/"

@@ -7,3 +7,7 @@ plugins {
 android {
     namespace = "com.theblackbit.rickandmorty.core.resources"
 }
+
+dependencies {
+    implementation(libs.core.splashscreen)
+}
