@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.SplashScreenTheme" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.SplashScreenTheme" parent="android:Theme.Material.NoActionBar">
         <item name="windowSplashScreenBackground">#FF232323</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
