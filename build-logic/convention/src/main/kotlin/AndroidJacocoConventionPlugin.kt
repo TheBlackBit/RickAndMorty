@@ -24,15 +24,6 @@ private val coverageExclusions = listOf(
     "**/R\$*.class",
     "**/BuildConfig.*",
     "**/Manifest*.*",
-    "**/*MapperImpl*.*",
-    "**/**Bind**/**",
-    "**/*Args*.*",
-    "**/di*/**",
-    "**/theme*/**",
-    "**/*Companion*.*",
-    "**/*Module*.*",
-    "**/*Dagger*.*",
-    "**/*Hilt*.*",
 )
 
 private fun Project.configureJacoco() {
@@ -50,6 +41,11 @@ private fun Project.configureJacoco() {
 
         val kotlinTree = fileTree("$buildDir/tmp/kotlin-classes/debug") {
             coverageExclusions
+        }.filter {
+            !it.name.contains("Query") &&
+                    !it.name.contains("GraphQL") &&
+                    !it.name.contains("Module")
+
         }
 
         classDirectories.from(kotlinTree)
