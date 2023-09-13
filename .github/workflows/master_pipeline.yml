@@ -6,8 +6,8 @@ on:
       - 'master'
 
 jobs:
-  run-linter-develop:
-    name: run-linter-master
+  run-linter-master:
+    name: run linter master
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
