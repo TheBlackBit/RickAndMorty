@@ -7,3 +7,7 @@ plugins {
 android {
     namespace = "com.theblackbit.rickandmorty.core.model"
 }
+
+dependencies {
+    implementation(project(":core:resources"))
+}

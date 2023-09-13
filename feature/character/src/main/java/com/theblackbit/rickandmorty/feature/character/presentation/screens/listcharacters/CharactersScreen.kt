@@ -27,7 +27,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -40,11 +39,10 @@ import androidx.constraintlayout.compose.MotionLayout
 import androidx.constraintlayout.compose.MotionScene
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import com.skydoves.landscapist.ShimmerParams
-import com.skydoves.landscapist.glide.GlideImage
 import com.theblackbit.rickandmorty.core.model.Character
 import com.theblackbit.rickandmorty.core.model.encodedImageUrl
 import com.theblackbit.rickandmorty.core.resources.R
+import com.theblackbit.rickandmorty.feature.character.presentation.composables.GlideImageComposable
 import com.theblackbit.rickandmorty.feature.character.presentation.composables.ProgressComposable
 import kotlin.math.absoluteValue
 
@@ -168,18 +166,7 @@ private fun CharacterCard(
                 onClickItem.invoke(character.id, character.encodedImageUrl())
             }
         ) {
-            GlideImage(
-                modifier = modifier,
-                imageModel = character.image,
-                contentScale = ContentScale.Crop,
-                shimmerParams = ShimmerParams(
-                    baseColor = MaterialTheme.colorScheme.onBackground,
-                    highlightColor = Color.LightGray,
-                    durationMillis = 2000,
-                    dropOff = 0.65f,
-                    tilt = 20f
-                )
-            )
+            GlideImageComposable(imageUrl = character.image, modifier = modifier)
         }
 
         Text(
