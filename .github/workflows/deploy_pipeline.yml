@@ -44,9 +44,9 @@ jobs:
           echo "ALIAS=${{secrets.ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
           echo "KEY_PASS=${{secrets.KEY_PASS}}" >> ${{github.workspace}}/secrets.defaults.properties
           echo "KEY_ALIAS=${{secrets.KEY_ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
-      - run: fastlane increment_version id:${{APP_ID}} token:${{FIREBASE_CI_TOKEN}}
+      - run: fastlane increment_version id:${{secrets.APP_ID}} token:${{secrets.FIREBASE_CI_TOKEN}}
       - run: fastlane set_version_name version:${{ env.RELEASE_VERSION }}
       - run: fastlane generate_apk
-      - run: fastlane distribute id:${{APP_ID}} testers:${{vars.TESTERS}} notes:${{vars.NOTES}} token:${{FIREBASE_CI_TOKEN}}
+      - run: fastlane distribute id:${{secrets.APP_ID}} testers:${{vars.TESTERS}} notes:${{vars.NOTES}} token:${{secrets.FIREBASE_CI_TOKEN}}
 
 
