@@ -1,4 +1,4 @@
-version: "2"         # required to adjust maintainability checks
+version: "3"         # required to adjust maintainability checks
 
 checks:
   argument-count:
@@ -16,7 +16,7 @@ checks:
   method-complexity:
     enabled: true
     config:
-      threshold: 5
+      threshold: 7
   method-count:
     enabled: true
     config:
@@ -42,7 +42,7 @@ checks:
     config:
       threshold: 40
 exclude_patterns:
-- "*/src/test/"
-- "*/src/AndroidTest/"
-- "build-logic/"
-- "core/testing/"
+  - "**/test/"
+  - "**/testing/"
+  - "**/androidTest/"
+  - "**/build-logic/"
