@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, reopened, edited]
     branches:
-      - 'develop'
+      - 'test'
 
 jobs:
   run-linter-develop:
