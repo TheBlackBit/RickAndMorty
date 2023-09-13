@@ -1,0 +1,55 @@
+name: Develop Pipeline
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+    branches:
+      - 'develop'
+
+jobs:
+  run-linter-develop:
+    name: Runs linter develop
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: |
+          # Create a properties file using echo command
+          echo 'API_URL="${{secrets.API_URL}}"' > ${{github.workspace}}/secrets.defaults.properties
+          echo "ALIAS=${{secrets.ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_PASS=${{secrets.KEY_PASS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_ALIAS=${{secrets.KEY_ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+      - run: fastlane lint_verification
+
+  test-code-coverage-develop:
+    needs: run-linter-develop
+    name: Run test and code coverage
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: |
+          # Create a properties file using echo command
+          echo 'API_URL="${{secrets.API_URL}}"' > ${{github.workspace}}/secrets.defaults.properties
+          echo "ALIAS=${{secrets.ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_PASS=${{secrets.KEY_PASS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_ALIAS=${{secrets.KEY_ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+      - run: fastlane coverage_report
+      - uses: madrapps/jacoco-report@v1.6.1
+        with:
+          paths: |
+            ${{github.workspace}}/app/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/core/local-storage/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/core/model/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/core/network/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/core/util/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+            ${{github.workspace}}/feature/character/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 60
+          min-coverage-changed-files: 60
+          continue-on-error: false

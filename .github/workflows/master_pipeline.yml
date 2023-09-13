@@ -1,0 +1,41 @@
+name: Master Pipeline
+on:
+  pull_request:
+    types: [opened, reopened, edited ]
+    branches:
+      - 'master'
+
+jobs:
+  test-cc-code-climate-master:
+    name: Unite test and code climate coverage report 🌡📊
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: |
+          # Create a properties file using echo command
+          echo 'API_URL="${{secrets.API_URL}}"' > ${{github.workspace}}/secrets.defaults.properties
+          echo "ALIAS=${{secrets.ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_PASS=${{secrets.KEY_PASS}}" >> ${{github.workspace}}/secrets.defaults.properties
+          echo "KEY_ALIAS=${{secrets.KEY_ALIAS}}" >> ${{github.workspace}}/secrets.defaults.properties
+      - uses: paambaati/codeclimate-action@v5.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          JACOCO_SOURCE_PATH: |
+            ${{github.workspace}}/app/src/main/java
+            ${{github.workspace}}/core/local-storage/src/main/java
+            ${{github.workspace}}/core/network/src/main/java
+            ${{github.workspace}}/core/model/src/main/java
+            ${{github.workspace}}/feature/character/src/main/java
+        with:
+          coverageCommand: fastlane coverage_report
+          coverageLocations: |
+            ${{github.workspace}}/app/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml:jacoco
+            ${{github.workspace}}/core/local-storage/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml:jacoco
+            ${{github.workspace}}/core/network/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml:jacoco
+            ${{github.workspace}}/core/model/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml:jacoco
+            ${{github.workspace}}/feature/character/build/reports/jacoco/jacocoMergedReport/jacocoMergedReport.xml:jacoco
+    

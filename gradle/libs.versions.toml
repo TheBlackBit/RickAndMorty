@@ -6,13 +6,15 @@ ktx = "1.12.0"
 kotlinBoom = "1.8.0"
 lifecycleRuntimeKtx = "2.6.2"
 composeBoom = "2023.09.00"
+lifecycleCompose = "2.6.2"
 navigationCompose = "2.7.2"
 navigationAnimationCompose = "0.25.1"
 activityCompose = "1.7.2"
 apollo = "3.8.2"
-hilt = "2.44"
+hilt = "2.48"
+hiltCompose = "1.0.0"
 hiltCompiler = "1.0.0"
-room = "2.5.2"
+room = "2.6.0-beta01"
 paging3 = "3.2.1"
 glide = "1.4.4"
 junit = "4.13.2"
@@ -21,6 +23,12 @@ kotlinxCoroutinesTest = "1.6.4"
 junitAndroidTest = "1.1.5"
 espresso = "3.5.1"
 hiltAndroidTesting = "2.38.1"
+ktlint = "11.5.1"
+appcompat = "1.6.1"
+material = "1.9.0"
+testing = "1.4.0"
+constraintLayoutCompose = "1.0.1"
+lottie = "6.1.0"
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
 kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlinBoom" }
@@ -36,10 +44,13 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 accompanist-navigation-animation = { group = "com.google.accompanist", name = "accompanist-navigation-animation" , version.ref = "navigationAnimationCompose"}
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintLayoutCompose" }
+lifecycle-runtime-compose= { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleCompose" }
 # Dagger Hilt
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltCompose"}
 # ROOM
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
@@ -48,15 +59,22 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 # Apollo3
 apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
 # Paging3
-paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging3" }
+paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging3" }
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging3" }
+paging-testing = { group = "androidx.paging", name = "paging-testing", version.ref = "paging3" }
+
 # Glide
 landscapist-glide = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "glide" }
+# Ktlint
+ktlint-gradle = { group = "org.jlleitschuh.gradle", name = "ktlint-gradle", version.ref = "ktlint" }
+# Lottie
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 # Test dependencies
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 paging-common-ktx = { group = "androidx.paging", name = "paging-common-ktx", version.ref = "paging3" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+apollo-testing-support = { group = "com.apollographql.apollo3", name = "apollo-testing-support", version.ref = "apollo" }
 # Instrumentation test dependencies
 android-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitAndroidTest" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
@@ -66,9 +84,14 @@ espresso-web = { group = "androidx.test.espresso", name = "espresso-web", versio
 compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hiltAndroidTesting" }
+testing-core = { group = "androidx.test", name = "core", version.ref = "testing" }
+testing-runner = { group = "androidx.test", name = "runner", version.ref = "testing" }
+testing-rules = { group = "androidx.test", name = "rules", version.ref = "testing" }
 # Build-logic
 android-tools-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 gradlePlugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }

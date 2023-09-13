@@ -13,10 +13,10 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", libsCatalog.findLibrary("hilt.android").get())
+                add("implementation", libsCatalog.findLibrary("hilt.navigation.compose").get())
                 add("kapt", libsCatalog.findLibrary("hilt.compiler").get())
                 add("kapt", libsCatalog.findLibrary("hilt.android.compiler").get())
                 add("kaptAndroidTest", libsCatalog.findLibrary("hilt.compiler").get())
-                add("androidTestImplementation", libsCatalog.findLibrary("hilt.android.testing").get())
             }
         }
     }

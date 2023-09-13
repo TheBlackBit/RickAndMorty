@@ -13,7 +13,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 rootProject.name = "R&M"
 include(":app")
+include(":core:network")
+include(":core:local-storage")
+include(":core:resources")
+include(":core:model")
+include(":core:testing")
+include(":core:util")
+include(":feature:character")
