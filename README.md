@@ -82,7 +82,6 @@ Fastlane is used in order to handle CI/CD
 - Jetpack Compose
 - MVVM
 - Dagger Hilt
-- MVVM
 - Flows
 - Paging3
 - Graphql + Apollo3
